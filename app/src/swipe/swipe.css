@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+svg {
+  display: none;
+}
+
+body {
+  background: white;
+  /* the following lines stop the page scrolling when profile exits the screen on the right side*/
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  position: absolute;
+  box-sizing: content-box;
+  width: 370px;
+  height: 420px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper {
+  position: absolute;
+  padding: 10px;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p,
+label,
+option,
+select,
+.swipe-wording {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.user-profile {
+  width: 370px;
+}
+
+.seeking {
+  text-align: center;
+  width: 370px;
+  height: 30px;
+}
+
+.profile {
+  width: 300px;
+  height: 250px;
+  border: 2px solid lightgrey;
+  transition: 0.2s ease;
+}
+
+.profile-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.profile-wording {
+  height: 50px;
+  align-items: center;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.profile-heart {
+  font-size: 60px;
+  color: #ff4dc4;
+  -webkit-filter: url(#pink);
+  filter: url(#pink);
+  opacity: 0;
+  transform: rotate(20deg);
+  animation: heartbeat 0.6s infinite;
+  animation-play-state: paused; /* started with javascript */
+}
+
+.profile-cross {
+  font-size: 67px;
+  font-family: 'Open Sans', sans-serif;
+  opacity: 0;
+  transform: rotate(-20deg);
+  animation: jiggle 0.6s infinite;
+  animation-play-state: paused;
+  padding: 0 15px;
+}
+
+.profile-buttons {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photos {
+  height: 160px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-counter {
+  height: 25px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.stack {
+  position: absolute;
+  top: 148px; /* need to place this exactly on top of profile */
+  left: 35px;
+  width: 300px;
+  height: 250px;
+  background: white;
+  border: 2px solid lightgrey;
+  transition: 0.2s ease;
+  z-index: -1;
+  /* the stacked cards box shadow */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px #eee,
+    0 10px 1px -4px rgba(0, 0, 0, 0.15), 0 20px 0 -10px #eee,
+    0 20px 1px -9px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#qmark {
+  font-size: 100px;
+  user-select: none;
+  opacity: 0;
+  padding-bottom: 10px;
+}
+
+.pic {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+  user-select: none;
+}
+
+#hearttext {
+  color: #ff4dc4;
+  -webkit-filter: url(#pink);
+  filter: url(#pink);
+}
+
+.button {
+  width: 155px;
+  height: 50px;
+  postion: absolute;
+  border: 3px solid #ff4dc4;
+  border-radius: 50px 50px;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding-top: 10px;
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* apply pink filter to button so heart emoji is pink */
+#like {
+  color: #ff4dc4;
+  -webkit-filter: url(#pink);
+  filter: url(#pink);
+}
+
+#pass {
+  border: 3px solid black;
+  color: black;
+  margin-right: 20px;
+}
+
+.swipe-wording {
+  text-align: center;
+  font-style: italic;
+}
+
+.button:active {
+  transform: translateY(4px);
+}
+
+#like:hover {
+  background: #ff4dc4;
+  color: white;
+  -webkit-filter: none;
+  filter: none;
+}
+
+#pass:hover {
+  background: black;
+  color: white;
+}
+
+@keyframes heartbeat {
+  from {
+    transform: rotate(20deg) scale(1);
+  }
+  to {
+    transform: rotate(20deg) scale(1.2);
+  }
+}
+
+@keyframes jiggle {
+  from {
+    transform: rotate(-20deg);
+  }
+  to {
+    transform: rotate(-25deg);
+  }
+}

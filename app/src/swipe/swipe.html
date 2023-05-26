@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/Draggable.min.js"></script>
+  <link rel="stylesheet" href="./swipe.css">
+  <script type="text/javascript" src="../../assets/hammer.min.js"></script>
+
+  <title>Swipe</title>
+</head>
+
+<body>
+
+  <!-- a pink filter that can be applied to the heart icon to make it pink -->
+  <svg>
+    <filter id="pink">
+      <feColorMatrix type="matrix" values="
+              1     0     0     0     0
+              0     0.3     0     0     0
+              0     0     0.77     0     0
+              0     0     0     1     0 " />
+    </filter>
+  </svg>
+  <div class="container" id="container">
+    <div class="user-profile" id="user-profile">
+      <div class="seeking">
+        <label for="Iam">I am:</label>
+        <select id="Iam" name="Iam">
+          <option value="Male" selected>Male</option>
+          <option value="Female">Female</option>
+          <option value="Non-Gender">Non-Gender</option>
+        </select>
+        <label for="lfor">Looking for:</label>
+        <select id="lfor" name="Iam">
+          <option value="Male">Male</option>
+          <option value="Female" selected>Female</option>
+          <option value="Non-Gender">Non-Gender</option>
+        </select>
+      </div>
+      <div class="profile-buttons">
+        <div class="button" id="pass">X pass</div>
+        <div class="button" id="like">🤍 Like</div>
+      </div>
+    </div>
+    <div class="like-counter" id="like-counter">
+      X PASSES: <span id='passcounter'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+        id='hearttext'>🤍 LIKES: <span id='likecounter'></span></span>
+    </div>
+    <div class="stack" id="stack"><span id="qmark">❓</span></div>
+    <!-- used to show stack of cards, keep this seperate as it needs to be not draggable -->
+    <div class="content" id="content"></div>
+    <!-- you won't find profile class here, it gets added in the javascript using insertAdjacentHTML! -->
+  </div>
+
+  <script type="text/javascript" src="./swipe.js"></script>
+</body>
+
+</html>
