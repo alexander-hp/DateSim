@@ -8,6 +8,7 @@ function openSignIn() {
     signInEmail.value = signUpEmail.value;
   }
 }
+// hOLA 
 
 function openSignUp() {
   container.classList.add('right-panel-active');
