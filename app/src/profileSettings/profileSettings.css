@@ -60,6 +60,17 @@ body {
   color: #fff;
   cursor: pointer;
 }
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada2 {
+  position: absolute;
+  top: 1rem;
+  right: 15rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+}
 
 .seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
   margin-right: 1rem;
@@ -174,18 +185,6 @@ body {
 
 .seccion-perfil-usuario .redes-sociales .boton-redes + .boton-redes {
   margin-top: 0.5rem;
-}
-
-.seccion-perfil-usuario .boton-redes.facebook {
-  background-color: #5955ff;
-}
-
-.seccion-perfil-usuario .boton-redes.twitter {
-  background-color: #35e1bf;
-}
-
-.seccion-perfil-usuario .boton-redes.instagram {
-  background: linear-gradient(45deg, #ff2dfd, #40a7ff);
 }
 
 /* adactacion a dispositivos */
