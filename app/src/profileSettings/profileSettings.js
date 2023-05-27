@@ -26,8 +26,52 @@ document.getElementById('selectAvatar').style.display = 'none';
   });
 })();
 
+function validateSession() {
+  $.ajax({
+    type: 'GET',
+    url: '../../services/validateSession.php',
+    dataType: 'json',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.stringify(response);
+      // console.log(jsonResponse);
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.table(response);
+      console.log(response.email);
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Session no encontrada');
+      window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Session no encontrada');
+    },
+  });
+}
+
 function swipe() {
   window.location.href = 'http://localhost/DateSim/app/src/swipe/swipe.html';
+}
+
+function closeSession() {
+  $.ajax({
+    type: 'POST',
+    url: '../../services/closeSession.php',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.log(response);
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Session cerrada');
+      window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Session cerrada');
+    },
+  });
 }
 
 function showSelectAvatar() {
@@ -45,3 +89,5 @@ function selectAvatar(urlAvatar) {
   myAvatar.src = urlAvatar;
   document.getElementById('selectAvatar').style.display = 'none';
 }
+
+validateSession();
