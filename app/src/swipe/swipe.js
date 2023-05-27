@@ -1,14 +1,3 @@
-/* tinder GSAP animation concept inspired from here: 
-
-https://codepen.io/arjentienkamp/pen/MYpYMO 
-
-enhanced to use GSAP 3 and removed all JQUERY, also my version includes a stack of cards and animated heart and cross icons on drag 
-
-the tricky part is that when the dragging is finished the card needs to vanish and then start again. To do this javascript is used to toggle adding/removing the profile class in the HTML.
-
-*/
-
-// initialising variables.
 const likeButton = document.getElementById('like');
 const passButton = document.getElementById('pass');
 const container = document.getElementById('container');

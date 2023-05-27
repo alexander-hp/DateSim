@@ -26,42 +26,291 @@
     <div class="perfil-usuario-header">
       <div class="perfil-usuario-portada">
         <div class="perfil-usuario-avatar">
-          <img src="https://cdn-icons-png.flaticon.com/128/4140/4140037.png" alt="img-avatar">
-          <button type="button" class="boton-avatar">
+          <img id="imgAvatar" src="https://cdn-icons-png.flaticon.com/128/4140/4140037.png" alt="img-avatar">
+          <button type="button" onclick="showSelectAvatar()" class="boton-avatar">
             <i class="far fa-image"></i>
           </button>
         </div>
         <button type="button" class="boton-portada">
-          <i class="far fa-image"></i> Cambiar fondo
+          <i class="far fa-window-close"></i> Cerrar Sesión
         </button>
+        <button type="button" onclick="swipe()" class="boton-portada2">
+          <i class="fas fa-fire-alt"></i> Buscar Citas
+        </button>
+
       </div>
     </div>
     <div class="perfil-usuario-body">
       <div class="perfil-usuario-bio">
-        <h3 class="titulo">Maria Alejandra De la Cruz</h3>
-        <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="titulo">Gabriel Aguilar Hernández</h3>
+        <p class="texto">Acerca de mí</p>
+        <textarea name="" id="" cols="80" rows="5"></textarea>
+      </div>
+      <div class="perfil-usuario-footer" id="selectAvatar">
+        <div class="card-body">
+          <h1>Selecciona tu Avatar</h1>
+          <div class="row">
+
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/7831/7831809.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/7831/7831809.png')"
+                  class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/4086/4086652.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/2335/2335114.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/921/921053.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1785/1785911.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/949/949635.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/805/805390.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/921/921018.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/7030/7030136.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/4532/4532517.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/921/921002.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/3371/3371900.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/7029/7029988.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1785/1785918.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/3884/3884871.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1845/1845793.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/763/763690.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1752/1752772.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/4681/4681809.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/817/817776.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1090/1090806.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1236/1236376.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/3562/3562745.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
+              <img src="https://cdn-icons-png.flaticon.com/128/5798/5798459.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="perfil-usuario-footer">
-        <ul class="lista-datos">
-          <li><i class="icono fas fa-map-signs"></i> Direccion de usuario:</li>
-          <li><i class="icono fas fa-phone-alt"></i> Telefono:</li>
-          <li><i class="icono fas fa-briefcase"></i> Trabaja en.</li>
-          <li><i class="icono fas fa-building"></i> Cargo</li>
-        </ul>
-        <ul class="lista-datos">
-          <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
-          <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
-          <li><i class="icono fas fa-user-check"></i> Registro.</li>
-          <li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
-        </ul>
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label for="validationName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+            <div class="valid-feedback">
+              ¡Esta bien!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="validationPassword">
+            <div class="valid-feedback">
+              ¡Esta bien, contraseña guardada!
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="validationBuscando" class="form-label">Buscando</label>
+            <select class="form-select" id="validationBuscando" required>
+              <option selected disabled value="">Elige una opción</option>
+              <option>Hombre</option>
+              <option>Mujer</option>
+              <option>Otros
+              </option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor introduzca un interés valido.
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationEdad1" class="form-label">De</label>
+            <input type="number" min="18" class="form-control" id="validationEdad1">
+            <div class="valid-feedback">
+              ¡Esta bien!
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationEdad2" class="form-label">Hasta</label>
+            <input type="number" min="18" class="form-control" id="validationEdad2">
+            <div class="valid-feedback">
+              ¡Esta bien!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom04" class="form-label">Mi genero </label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">Elige una opción</option>
+              <option>Hombre</option>
+              <option>Mujer</option>
+              <option>Prefiero no decirlo
+              </option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor introduzca un genero valido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationPais" class="form-label"> País</label>
+            <input type="ubication" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+              Por favor introduzca un País valido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationEstado" class="form-label"> Estado</label>
+            <input type="ubication" class="form-control" id="validationEstado" required>
+            <div class="invalid-feedback">
+              Por favor introduzca un Estado valido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCiudad" class="form-label"> Ciudad</label>
+            <input type="ubication" class="form-control" id="validationCiudad" required>
+            <div class="invalid-feedback">
+              Por favor introduzca un País valido.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationZIP" class="form-label"> ZIP</label>
+            <input type="ubication" class="form-control" id="validationZIP" required>
+            <div class="invalid-feedback">
+              Por favor introduzca un País valido.
+            </div>
+          </div>
+          <div class="col-md-7">
+            <label for="validationCustom05" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="validationCustom05" required>
+            <div class="invalid-feedback">
+              .
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label" for="invalidCheck">
+                Aceptar terminos y condiciones
+              </label>
+              <div class="invalid-feedback">
+                Debes aceptar los terminos y condiciones antes de continuar.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary" type="button">Acpetar y guardar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-danger" type="button">Cancelar</button>
+          </div>
+        </form>
       </div>
-      <div class="redes-sociales">
-        <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
-        <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
-        <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
-      </div>
-    </div>
   </section>
   <!--====  End of html  ====-->
 
@@ -77,50 +326,13 @@
       transform: scale(1.4)
     }
   </style>
-  <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
-    <p style="font-size: .75rem;">Apock graficos</p>
-    <div>
-      <a target="_blank" href="https://www.facebook.com/ApockGraficos"><i class="fab fa-facebook-square"></i></a>
-      <a target="_blank" href="https://twitter.com/ApockGraficos"><i class="fab fa-twitter"></i></a>
-      <a target="_blank" href="https://www.instagram.com/ApockGraficos"><i class="fab fa-instagram"></i></a>
-      <a target="_blank" href="https://www.youtube.com/channel/UC15DkMZQ80aoW_Rqk4n2T_w"><i
-          class="fab fa-youtube"></i></a>
-    </div>
-  </div>
+
   <!--====  End of tarjeta  ====-->
 
 
-  <!--====  Start of modal  ====-->
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--====  End of modal  ====-->
+
+
 
   <script type="text/javascript" src="./profileSettings.js"></script>
 </body>
