@@ -42,10 +42,17 @@
     </div>
     <div class="perfil-usuario-body">
       <div class="perfil-usuario-bio">
-        <h3 class="titulo">Gabriel Aguilar Hernández</h3>
-        <p class="texto">Acerca de mí</p>
-        <textarea name="" id="" cols="80" rows="5"></textarea>
+        <h3 id="userNameHeader" class="titulo"></h3>
+        <!-- <p class="texto">Acerca de mí</p> -->
+        <div class="">
+          <label for="validationDescription" class="form-label">Acerca de mí</label>
+          <textarea style="width: 100%;" name="" id="validationDescription" cols="80" rows="5"></textarea>
+          <div class="valid-feedback">
+            ¡Esta bien!
+          </div>
+        </div>
       </div>
+
       <div class="perfil-usuario-footer" id="selectAvatar">
         <div class="card-body">
           <h1>Selecciona tu Avatar</h1>
@@ -221,11 +228,16 @@
           </div>
         </div>
       </div>
+
+      <div class="perfil-usuario-footer" id="respuestaBD">
+
+      </div>
+
       <div class="perfil-usuario-footer">
         <form class="row g-3 needs-validation" novalidate>
           <div class="col-md-6">
             <label for="validationName" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+            <input type="text" class="form-control" id="validationName" required>
             <div class="valid-feedback">
               ¡Esta bien!
             </div>
@@ -242,9 +254,9 @@
             <label for="validationBuscando" class="form-label">Buscando</label>
             <select class="form-select" id="validationBuscando" required>
               <option selected disabled value="">Elige una opción</option>
-              <option>Hombre</option>
-              <option>Mujer</option>
-              <option>Otros
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Otros">Otros
               </option>
             </select>
             <div class="invalid-feedback">
@@ -266,9 +278,9 @@
             </div>
           </div>
           <div class="col-md-6">
-            <label for="validationCustom04" class="form-label">Mi genero </label>
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value="">Elige una opción</option>
+            <label for="validationGender" class="form-label">Mi genero </label>
+            <select class="form-select" id="validationGender" required>
+              <option selected disabled>Elige una opción</option>
               <option>Hombre</option>
               <option>Mujer</option>
               <option>Prefiero no decirlo
@@ -280,7 +292,7 @@
           </div>
           <div class="col-md-6">
             <label for="validationPais" class="form-label"> País</label>
-            <input type="ubication" class="form-control" id="validationCustom03" required>
+            <input type="ubication" class="form-control" id="validationPais" required>
             <div class="invalid-feedback">
               Por favor introduzca un País valido.
             </div>
@@ -307,8 +319,8 @@
             </div>
           </div>
           <div class="col-md-7">
-            <label for="validationCustom05" class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="validationCustom05" required>
+            <label for="validationBirthdate" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="validationBirthdate" required>
             <div class="invalid-feedback">
               .
             </div>
@@ -325,7 +337,7 @@
             </div>
           </div>
           <div class="col-6">
-            <button class="btn btn-primary" type="button">Acpetar y guardar</button>
+            <button class="btn btn-primary" type="submit">Acpetar y guardar</button>
           </div>
           <div class="col-6">
             <button class="btn btn-danger" type="button">Cancelar</button>

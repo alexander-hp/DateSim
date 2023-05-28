@@ -37,6 +37,11 @@ function validateSignInBD(email, password) {
       console.log(response);
       $('#respuestaBD').html(response);
       if (response == 'true') {
+        // Convertir el objeto JSON en una cadena
+        const jsonUsuario = JSON.stringify(parametros);
+
+        // Guardar la cadena en el localStorage con la clave "usuario"
+        localStorage.setItem('usuario', jsonUsuario);
         window.location.replace(
           'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
         );

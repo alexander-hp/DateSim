@@ -28,24 +28,6 @@
       $jsonData = json_encode($row);
       header('Content-Type: application/json');
       echo($jsonData);
-
-      $hashAlmacenado = $row[0]; // Hash almacenado en la base de datos
-      // TODO if para ver si contrase;a es correcta
-      // if (password_verify($password, $hashAlmacenado)) {
-      //   $_SESSION["userName"] = $row[1];
-      //   // print($row[1]);
-      //   // $_SESSION["userEmail"] = $email;
-      //   // $_SESSION["userPassword"] = $password;
-      //     // La contraseña es válida
-      //     echo("true");
-      //     // echo "Contraseña correcta";
-      //     http_response_code(200);
-      // } else {
-      //     // La contraseña es inválida
-      //     http_response_code(500);
-      //     echo ("false");
-      //     // echo "Contraseña incorrecta";
-      // }
   
     } catch (PDOException $e) {
       exit("Connection failed: " . $e->getMessage());
