@@ -31,7 +31,7 @@
             <i class="far fa-image"></i>
           </button>
         </div>
-        <button type="button" class="boton-portada">
+        <button type="button" onclick="closeSession()" class="boton-portada">
           <i class="far fa-window-close"></i> Cerrar Sesión
         </button>
         <button type="button" onclick="swipe()" class="boton-portada2">
@@ -42,15 +42,21 @@
     </div>
     <div class="perfil-usuario-body">
       <div class="perfil-usuario-bio">
-        <h3 class="titulo">Gabriel Aguilar Hernández</h3>
-        <p class="texto">Acerca de mí</p>
-        <textarea name="" id="" cols="80" rows="5"></textarea>
+        <h3 id="userNameHeader" class="titulo"></h3>
+        <!-- <p class="texto">Acerca de mí</p> -->
+        <div class="">
+          <label for="validationDescription" class="form-label">Acerca de mí</label>
+          <textarea style="width: 100%;" name="" id="validationDescription" cols="80" rows="5"></textarea>
+          <div class="valid-feedback">
+            ¡Esta bien!
+          </div>
+        </div>
       </div>
+
       <div class="perfil-usuario-footer" id="selectAvatar">
         <div class="card-body">
           <h1>Selecciona tu Avatar</h1>
           <div class="row">
-
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/7831/7831809.png" class="card-img-top" alt="...">
               <div class="card-body">
@@ -58,153 +64,180 @@
                   class="btn btn-primary">Select picture</a>
               </div>
             </div>
-
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/4086/4086652.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/4086/4086652.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/2335/2335114.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/2335/2335114.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/921/921053.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/921/921053.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1785/1785911.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1785/1785911.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/949/949635.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/949/949635.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/805/805390.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/805/805390.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/921/921018.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/921/921018.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/7030/7030136.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/7030/7030136.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/4532/4532517.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/4532/4532517.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/921/921002.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/921/921002.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/3371/3371900.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/3371/3371900.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/7029/7029988.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/7029/7029988.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1785/1785918.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1785/1785918.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/3884/3884871.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/3884/3884871.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1845/1845793.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1845/1845793.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/763/763690.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/763/763690.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1752/1752772.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1752/1752772')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/4681/4681809.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/4681/4681809.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/817/817776.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/817/817776.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1090/1090806.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1090/1090806')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/1236/1236376.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/1236/1236376.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/3562/3562745.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/3562/3562745.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0" style="width: 8rem;">
               <img src="https://cdn-icons-png.flaticon.com/128/5798/5798459.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href="#" onclick="selectAvatar()" class="btn btn-primary">Select picture</a>
+                <a href="#" onclick="selectAvatar('https://cdn-icons-png.flaticon.com/128/5798/5798459.png')"
+                  class="btn btn-primary">Select picture</a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="perfil-usuario-footer" id="respuestaBD">
+
+      </div>
+
       <div class="perfil-usuario-footer">
         <form class="row g-3 needs-validation" novalidate>
           <div class="col-md-6">
             <label for="validationName" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+            <input type="text" class="form-control" id="validationName" required>
             <div class="valid-feedback">
               ¡Esta bien!
             </div>
@@ -221,9 +254,9 @@
             <label for="validationBuscando" class="form-label">Buscando</label>
             <select class="form-select" id="validationBuscando" required>
               <option selected disabled value="">Elige una opción</option>
-              <option>Hombre</option>
-              <option>Mujer</option>
-              <option>Otros
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Otros">Otros
               </option>
             </select>
             <div class="invalid-feedback">
@@ -245,9 +278,9 @@
             </div>
           </div>
           <div class="col-md-6">
-            <label for="validationCustom04" class="form-label">Mi genero </label>
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value="">Elige una opción</option>
+            <label for="validationGender" class="form-label">Mi genero </label>
+            <select class="form-select" id="validationGender" required>
+              <option selected disabled>Elige una opción</option>
               <option>Hombre</option>
               <option>Mujer</option>
               <option>Prefiero no decirlo
@@ -259,7 +292,7 @@
           </div>
           <div class="col-md-6">
             <label for="validationPais" class="form-label"> País</label>
-            <input type="ubication" class="form-control" id="validationCustom03" required>
+            <input type="ubication" class="form-control" id="validationPais" required>
             <div class="invalid-feedback">
               Por favor introduzca un País valido.
             </div>
@@ -286,8 +319,8 @@
             </div>
           </div>
           <div class="col-md-7">
-            <label for="validationCustom05" class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="validationCustom05" required>
+            <label for="validationBirthdate" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="validationBirthdate" required>
             <div class="invalid-feedback">
               .
             </div>
@@ -304,7 +337,7 @@
             </div>
           </div>
           <div class="col-6">
-            <button class="btn btn-primary" type="button">Acpetar y guardar</button>
+            <button class="btn btn-primary" type="submit">Acpetar y guardar</button>
           </div>
           <div class="col-6">
             <button class="btn btn-danger" type="button">Cancelar</button>

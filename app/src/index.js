@@ -4,6 +4,7 @@ const signUpEmail = document.getElementById('signUpEmail');
 
 function openSignIn() {
   container.classList.remove('right-panel-active');
+  $('#respuestaBD').html('');
   if (signUpEmail.value !== '') {
     signInEmail.value = signUpEmail.value;
   }
@@ -12,9 +13,48 @@ function openSignIn() {
 
 function openSignUp() {
   container.classList.add('right-panel-active');
+  $('#respuestaBD').html('');
   if (signInEmail.value !== '') {
     signUpEmail.value = signInEmail.value;
   }
+}
+
+function validateSignInBD(email, password) {
+  var parametros = {
+    email: email,
+    password: password,
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '../services/signin.php',
+    data: parametros,
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.log(response);
+      $('#respuestaBD').html(response);
+      if (response == 'true') {
+        // Convertir el objeto JSON en una cadena
+        const jsonUsuario = JSON.stringify(parametros);
+
+        // Guardar la cadena en el localStorage con la clave "usuario"
+        localStorage.setItem('usuario', jsonUsuario);
+        window.location.replace(
+          'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
+        );
+      } else {
+        console.log('Contraseña o correo invalido');
+      }
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Contraseña o correo invalido');
+      console.log('Contraseña o correo invalido');
+    },
+  });
 }
 
 function validateFormSignIn() {
@@ -34,9 +74,45 @@ function validateFormSignIn() {
     return false;
   }
 
-  window.location.replace(
-    'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
-  );
+  validateSignInBD(emailSignIn.value, passwordSignIn.value);
+  // window.location.replace(
+  //   'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
+  // );
+}
+
+function createUserBD(name, email, password, birthdate) {
+  var parametros = {
+    name: name,
+    email: email,
+    password: password,
+    birthdate: birthdate,
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '../services/signup.php',
+    data: parametros,
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.log(response);
+      $('#respuestaBD').html(response);
+      if (response == 'true') {
+        window.location.replace(
+          'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
+        );
+      } else {
+        console.log('No dejar pasar');
+      }
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Correo ya existente');
+      console.log('Correo ya existente');
+    },
+  });
 }
 
 function validateFormSign() {
@@ -70,7 +146,13 @@ function validateFormSign() {
     return false;
   }
 
-  window.location.replace(
-    'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
+  createUserBD(
+    nameSignUp.value,
+    emailSignUp.value,
+    passwordSignUp.value,
+    BirthdateSignUp.value
   );
+  // window.location.replace(
+  //   'http://localhost/DateSim/app/src/profileSettings/profileSettings.html'
+  // );
 }
