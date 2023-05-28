@@ -13,13 +13,14 @@
   <link rel="stylesheet" href="./swipe.css">
   <script type="text/javascript" src="../../assets/hammer.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+  <script src="../../assets/jquery-3.6.4.min.js"></script>
   <title>Swipe</title>
 </head>
 
 <body>
   <div class="d-grid gap-2 d-md-block">
-    <button class="custom-btn btn-11"><span>Cerrar Sesion</span></button>
-    <button class="custom-btn btn-11"><span>Configurar Perfil</span></button>
+    <button class="custom-btn btn-11" onclick="closeSession()"><span>Cerrar Sesion</span></button>
+    <button class="custom-btn btn-11" onclick="redirigir()"><span>Configurar Perfil</span></button>
   </div>
   <!-- a pink filter that can be applied to the heart icon to make it pink -->
   <svg>
@@ -60,6 +61,10 @@
     <!-- used to show stack of cards, keep this seperate as it needs to be not draggable -->
     <div class="content" id="content"></div>
     <!-- you won't find profile class here, it gets added in the javascript using insertAdjacentHTML! -->
+  </div>
+
+  <div class="perfil-usuario-footer" id="respuestaBD">
+
   </div>
 
   <script type="text/javascript" src="./swipe.js"></script>

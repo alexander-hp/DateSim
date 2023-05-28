@@ -4,6 +4,17 @@ const container = document.getElementById('container');
 const likecounter = document.getElementById('likecounter');
 const passcounter = document.getElementById('passcounter');
 
+var emailUser;
+var birthdateUser;
+var genderUser;
+var hobbiesUser;
+var lookingForUser;
+var searchingByAgeUser;
+var cityUser;
+var countryUser;
+var stateUser;
+var zipUser;
+
 let likecount = 0;
 let passcount = 0;
 
@@ -11,6 +22,93 @@ let running = false;
 
 likecounter.innerHTML = 0;
 passcounter.innerHTML = 0;
+
+function getFilterSwipe() {
+  $.ajax({
+    type: 'GET',
+    url: '../../services/filterSwipe.php',
+    // dataType: 'json',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      $('#respuestaBD').html(response);
+      console.table(response);
+    },
+    error: function (error) {
+      $('#respuestaBD').html(error);
+      // window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Location no encontrada');
+    },
+  });
+}
+
+function validateSession() {
+  $.ajax({
+    type: 'GET',
+    url: '../../services/validateSession.php',
+    dataType: 'json',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      console.table(response);
+      emailUser = response.email;
+      nameUser = fillForm('validationName', response.name);
+      birthdateUser = response.birthdate;
+      genderUser = fillForm('validationGender', response.gender);
+      descriptionUser = fillForm('validationDescription', response.description);
+      hobbiesUser = fillForm('validationHobbies', response.hobbies);
+      lookingForUser = fillForm('validationBuscando', response.lookingFor);
+      searchingByAgeUser = fillForm('validationEdad1', response.searchingByAge);
+      avatarUser = response.avatar;
+      cityUser = fillForm('validationCiudad', response.city);
+      countryUser = fillForm('validationPais', response.country);
+      stateUser = fillForm('validationEstado', response.state);
+      zipUser = fillForm('validationZip', response.zip);
+
+      // ?Poner fecha
+      // window.onload = function () {
+      //   var dateInput = document.getElementById('validationBirthdate');
+      //   dateInput.setAttribute('value', response.birthdate);
+      // };
+      // ? fin poner fecha
+    },
+    error: function (error) {
+      $('#respuestaBD').html(error);
+      debugger;
+      window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Session no encontrada');
+    },
+  });
+}
+
+function closeSession() {
+  $.ajax({
+    type: 'POST',
+    url: '../../services/closeSession.php',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.log(response);
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Session cerrada');
+      window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Session cerrada');
+    },
+  });
+}
+
+function redirigir() {
+  window.location.href =
+    'http://localhost/DateSim/app/src/profileSettings/profileSettings.html#';
+}
+
+getFilterSwipe();
 
 const profiles = [];
 
@@ -574,6 +672,7 @@ function swipeLike() {
     ease: Power1.easeInOut,
   });
 
+  console.log('Le dio like');
   likecount++;
   likecounter.innerHTML = likecount;
 }
@@ -595,6 +694,7 @@ function swipePass() {
     rotation: -60,
   });
 
+  console.log('Se paso');
   passcount++;
   passcounter.innerHTML = passcount;
 }

@@ -31,6 +31,10 @@
 
                 // TODO if para ver si ya existia el correo o no
                 if ($row[0] > 0) {
+                    $_SESSION["userName"] = $row[1];
+                  // print($row[1]);
+                  $_SESSION["userEmail"] = $email;
+
 
                   // echo ("El correo: '$email' ya existe");
                   // $response = [
