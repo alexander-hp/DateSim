@@ -3,6 +3,8 @@
   // Verificar si el usuario ha iniciado sesión
   if (!isset($_SESSION['userName'])) {
       // El usuario no ha iniciado sesión, redirigir al formulario de inicio de sesión
+      $email = $_SESSION['userEmail'];
+      print($email);
       header('Location: http://localhost/DateSim/app/src');
       http_response_code(500);
       exit();

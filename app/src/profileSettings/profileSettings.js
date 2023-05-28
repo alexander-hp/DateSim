@@ -1,7 +1,7 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 var showAvatars;
 var myAvatar = document.getElementById('imgAvatar');
-var currentAvatar = 'https://cdn-icons-png.flaticon.com/128/4086/4086652.png';
+var currentAvatar;
 var jsonResponseForm;
 
 var nameUser;
@@ -47,50 +47,51 @@ var zipForm = document.getElementById('validationZIP');
 
         if (form.checkValidity()) {
           // Lógica adicional después de que el formulario haya pasado la validación
-          realizarAccionesAdicionales();
+          updateForm();
+          // realizarAccionesAdicionales();
         }
       },
       false
     );
   });
-  function realizarAccionesAdicionales() {
-    // debugger;
-    // Aquí puedes agregar tu código para realizar acciones adicionales una vez que el formulario haya pasado la validación
-    console.log(
-      'El formulario ha pasado la validación. Realizando acciones adicionales...'
-    );
-    updateForm();
-    // validateLocation();
-  }
 })();
 
 function updateForm() {
   var parametros = {
-    nameUser: nameUser,
-    email: emailUser,
-    birthdate: birthdateUser,
-    gender: genderUser,
-    description: descriptionUser,
-    hobbies: hobbiesUser,
-    lookingFor: lookingForUser,
-    searchingByAgeUser: searchingByAgeUser,
-    avatarUser: avatarUser,
-    cityUser: cityUser,
-    countryUser: countryUser,
-    stateUser: stateUser,
-    zipUser: zipUser,
+    nameUser: document.getElementById('validationName').value,
+    emailUser: emailUser,
+    birthdate: document.getElementById('validationBirthdate').value,
+    gender: document.getElementById('validationGender').value,
+    description: document.getElementById('validationDescription').value,
+    hobbies: document.getElementById('validationHobbies').value,
+    lookingFor: document.getElementById('validationBuscando').value,
+    searchingByAgeUser: document.getElementById('validationEdad1').value,
+    avatarUser: document.getElementById('imgAvatar').value,
+    avatarUser: myAvatar.src,
+    cityUser: document.getElementById('validationCiudad').value,
+    countryUser: document.getElementById('validationPais').value,
+    stateUser: document.getElementById('validationEstado').value,
+    zipUser: document.getElementById('validationZip').value,
   };
+  // console.log(document.getElementById('validationName').value);
   console.log(parametros);
 
   $.ajax({
-    data: parametros,
-    url: '../../services/updateProfileSettings.php',
     type: 'POST',
+    url: '../../services/updateProfileSettings.php',
+    data: parametros,
+    // dataType: 'json',
     beforeSend: function () {
-      $('#resultado').html('Procesando, espere por favor...');
+      $('#respuestaBD').html('Procesando, espere por favor...');
     },
     success: function (response) {
-      $('#resultado').html(response);
+      $('#respuestaBD').html(response);
+      console.table(response);
+    },
+    error: function (error) {
+      $('#respuestaBD').html(error);
+      // window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Location no encontrada');
     },
   });
 }
@@ -137,25 +138,35 @@ function validateSession() {
     },
     success: function (response) {
       console.table(response);
-      fillForm('validationName', response.name);
-      fillForm('validationBuscando', response.lookingFor);
-      fillForm('validationGender', response.gender);
-      fillForm('validationGender', response.description);
+      // fillForm('validationName', response.name);
+      // console.log(fillForm('validationName', response.name));
       $('#userNameHeader').html(response.name);
       emailUser = response.email;
-      passwordUser = response.password;
-      nameUser = response.name;
+      nameUser = fillForm('validationName', response.name);
+      // || $('#validationName').value();
       birthdateUser = response.birthdate;
-      genderUser = response.gender;
-      descriptionUser = response.description;
-      hobbiesUser = response.hobbies;
-      lookingForUser = response.lookingFor;
-      searchingByAgeUser = response.searchingByAge;
+      // || $('#validationBirthdate').value();
+      genderUser = fillForm('validationGender', response.gender);
+      // || $('#validationGender').value();
+      descriptionUser = fillForm('validationDescription', response.description);
+      // || $('#validationDescription').value();
+      hobbiesUser = fillForm('validationHobbies', response.hobbies);
+      // || $('#validationhobbies').value();
+      lookingForUser = fillForm('validationBuscando', response.lookingFor);
+      // || $('#validationBuscando').value();
+      searchingByAgeUser = fillForm('validationEdad1', response.searchingByAge);
+      // || $('#validationsearchingByAge').value();
       avatarUser = response.avatar;
-      cityUser = response.city;
-      countryUser = response.country;
-      stateUser = response.state;
-      zipUser = response.zip;
+      // || $('#validationavatar').value();
+      cityUser = fillForm('validationCiudad', response.city);
+      // || $('#validationCiudad').value();
+      countryUser = fillForm('validationPais', response.country);
+      // || $('#validationPais').value();
+      stateUser = fillForm('validationEstado', response.state);
+      // || $('#validationEstado').value();
+      zipUser = fillForm('validationZip', response.zip);
+      // document.getElementById('imgAvatar').value = currentAvatar;
+      // || $('#validationZip').value();
       // selectAvatar(response.avatar);
       // var password = response.password;
       // password.toString();
@@ -163,7 +174,7 @@ function validateSession() {
 
       //? Poner avatar
       if (response.avatar != null && response.avatar != undefined) {
-        myAvatar.src = urlAvatar;
+        myAvatar.src = response.avatar;
       }
       //? FIN Poner avatar
 
@@ -175,7 +186,8 @@ function validateSession() {
       // ? fin poner fecha
     },
     error: function (error) {
-      $('#respuestaBD').html('Session no encontrada');
+      $('#respuestaBD').html(error);
+      debugger;
       window.location.replace('http://localhost/DateSim/app/src');
       console.log('Session no encontrada');
     },
@@ -184,11 +196,13 @@ function validateSession() {
 
 function fillForm(idInput, inputValue) {
   if (inputValue != null || inputValue != undefined) {
-    console.log(idInput, inputValue);
+    // console.log(idInput, inputValue);
     document.getElementById(idInput).value = inputValue;
+    return inputValue;
   } else {
-    console.log(idInput, inputValue);
+    // console.log(idInput, inputValue);
     document.getElementById(idInput).value = '';
+    return '';
   }
 }
 
