@@ -4,6 +4,7 @@ const container = document.getElementById('container');
 const likecounter = document.getElementById('likecounter');
 const passcounter = document.getElementById('passcounter');
 
+var currentUser;
 var emailUser;
 var birthdateUser;
 var genderUser;
@@ -15,70 +16,96 @@ var countryUser;
 var stateUser;
 var zipUser;
 
+var usersToShow;
+
 let likecount = 0;
 let passcount = 0;
 
 let running = false;
 
+var profiles = [];
+
 likecounter.innerHTML = 0;
 passcounter.innerHTML = 0;
 
+function validateSession() {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'GET',
+      url: '../../services/validateSession.php',
+      dataType: 'json',
+      beforeSend: function () {
+        $('#respuestaBD').html('Procesando, espere por favor...');
+      },
+      success: function (response) {
+        console.log(response);
+        emailUser = response.email;
+        nameUser = fillForm(response.name);
+        birthdateUser = response.birthdate;
+        genderUser = fillForm(response.gender);
+        descriptionUser = fillForm(response.description);
+        hobbiesUser = fillForm(response.hobbies);
+        lookingForUser = fillForm(response.lookingFor);
+        searchingByAgeUser = fillForm(response.searchingByAge);
+        avatarUser = response.avatar;
+        cityUser = fillForm(response.city);
+        countryUser = fillForm(response.country);
+        stateUser = fillForm(response.state);
+        zipUser = fillForm(response.zip);
+        console.log(emailUser);
+        console.log(hobbiesUser);
+        resolve();
+        // ?Poner fecha
+        // window.onload = function () {
+        //   var dateInput = document.getElementById('validationBirthdate');
+        //   dateInput.setAttribute('value', response.birthdate);
+        // };
+        // ? fin poner fecha
+      },
+      error: function (error) {
+        $('#respuestaBD').html(error);
+        window.location.replace('http://localhost/DateSim/app/src');
+        console.log('Session no encontrada');
+        reject();
+      },
+    });
+  });
+}
+
 function getFilterSwipe() {
+  var parametros = {
+    email: emailUser,
+    birthdate: birthdateUser,
+    avatar: avatarUser,
+    city: cityUser,
+    state: stateUser,
+    country: countryUser,
+    zip: zipUser,
+    gender: genderUser,
+    hobbies: hobbiesUser,
+    lookingFor: lookingForUser,
+    searchingByAge: searchingByAgeUser,
+  };
+
   $.ajax({
     type: 'GET',
     url: '../../services/filterSwipe.php',
-    // dataType: 'json',
+    dataType: 'json',
+    data: parametros,
     beforeSend: function () {
       $('#respuestaBD').html('Procesando, espere por favor...');
     },
     success: function (response) {
       $('#respuestaBD').html(response);
       console.table(response);
+      usersToShow = response;
+      profiles.push(response);
+      console.log('profiles.push(response) = ', profiles);
     },
     error: function (error) {
       $('#respuestaBD').html(error);
-      // window.location.replace('http://localhost/DateSim/app/src');
+      console.log('Error filter = ', error);
       console.log('Location no encontrada');
-    },
-  });
-}
-
-function validateSession() {
-  $.ajax({
-    type: 'GET',
-    url: '../../services/validateSession.php',
-    dataType: 'json',
-    beforeSend: function () {
-      $('#respuestaBD').html('Procesando, espere por favor...');
-    },
-    success: function (response) {
-      console.table(response);
-      emailUser = response.email;
-      nameUser = fillForm('validationName', response.name);
-      birthdateUser = response.birthdate;
-      genderUser = fillForm('validationGender', response.gender);
-      descriptionUser = fillForm('validationDescription', response.description);
-      hobbiesUser = fillForm('validationHobbies', response.hobbies);
-      lookingForUser = fillForm('validationBuscando', response.lookingFor);
-      searchingByAgeUser = fillForm('validationEdad1', response.searchingByAge);
-      avatarUser = response.avatar;
-      cityUser = fillForm('validationCiudad', response.city);
-      countryUser = fillForm('validationPais', response.country);
-      stateUser = fillForm('validationEstado', response.state);
-      zipUser = fillForm('validationZip', response.zip);
-
-      // ?Poner fecha
-      // window.onload = function () {
-      //   var dateInput = document.getElementById('validationBirthdate');
-      //   dateInput.setAttribute('value', response.birthdate);
-      // };
-      // ? fin poner fecha
-    },
-    error: function (error) {
-      $('#respuestaBD').html(error);
-      debugger;
-      window.location.replace('http://localhost/DateSim/app/src');
-      console.log('Session no encontrada');
     },
   });
 }
@@ -103,14 +130,27 @@ function closeSession() {
   });
 }
 
+function fillForm(inputValue) {
+  if (inputValue != null || inputValue != undefined) {
+    return inputValue;
+  } else {
+    return '';
+  }
+}
+
 function redirigir() {
   window.location.href =
     'http://localhost/DateSim/app/src/profileSettings/profileSettings.html#';
 }
 
-getFilterSwipe();
-
-const profiles = [];
+validateSession()
+  .then(function () {
+    getFilterSwipe();
+    filterItems();
+  })
+  .catch(function (error) {
+    console.log('hay un error', error);
+  });
 
 // could have randomised users but made my own list, got a bit carried away. A few references to famous people.
 const user1 = {
@@ -513,60 +553,61 @@ const user50 = {
   pic: '🔫',
 };
 
-profiles.push(
-  user1,
-  user2,
-  user3,
-  user4,
-  user5,
-  user6,
-  user7,
-  user8,
-  user9,
-  user10,
-  user11,
-  user12,
-  user13,
-  user14,
-  user15,
-  user16,
-  user17,
-  user18,
-  user19,
-  user20,
-  user21,
-  user22,
-  user23,
-  user24,
-  user25,
-  user26,
-  user27,
-  user28,
-  user29,
-  user30,
-  user31,
-  user32,
-  user33,
-  user34,
-  user35,
-  user36,
-  user37,
-  user38,
-  user39,
-  user40,
-  user41,
-  user42,
-  user43,
-  user44,
-  user45,
-  user46,
-  user47,
-  user48,
-  user49,
-  user50
-);
+// profiles.push(
+//   user1,
+//   user2,
+//   user3,
+//   user4,
+//   user5,
+//   user6,
+//   user7,
+//   user8,
+//   user9,
+//   user10,
+//   user11,
+//   user12,
+//   user13,
+//   user14,
+//   user15,
+//   user16,
+//   user17,
+//   user18,
+//   user19,
+//   user20,
+//   user21,
+//   user22,
+//   user23,
+//   user24,
+//   user25,
+//   user26,
+//   user27,
+//   user28,
+//   user29,
+//   user30,
+//   user31,
+//   user32,
+//   user33,
+//   user34,
+//   user35,
+//   user36,
+//   user37,
+//   user38,
+//   user39,
+//   user40,
+//   user41,
+//   user42,
+//   user43,
+//   user44,
+//   user45,
+//   user46,
+//   user47,
+//   user48,
+//   user49,
+//   user50
+// );
 
 // when 'looking for' changed then update the profile
+
 lfor.addEventListener('change', updateLookingfor);
 
 // when like button clicked activate the swipe like
@@ -603,7 +644,7 @@ function setProfile() {
   let filterProfiles = filterItems(profiles, lforv);
   const r = Math.floor(Math.random() * filterProfiles.length);
   wording.innerHTML = `${filterProfiles[r].name}  ${filterProfiles[r].age} • ${filterProfiles[r].location}&nbsp;&nbsp;&nbsp;<span style='color:blue;cursor:pointer'>View Profile</span>`;
-
+  console.log(filterProfiles);
   pic.innerHTML = filterProfiles[r].pic;
 }
 
@@ -614,9 +655,18 @@ window.onload = function () {
 
 // filters the array based on gender passed
 function filterItems(arr, query) {
-  return arr.filter(function (el) {
-    return el.gender == query;
+  console.log('Arr = ', arr);
+  console.log('Query = ', query);
+  var filteredArr = [];
+  query = lookingForUser;
+  arr.forEach(function (el) {
+    el.forEach(function (item) {
+      if (item.gender == query) {
+        filteredArr.push(item);
+      }
+    });
   });
+  return filteredArr;
 }
 
 // enables the profile to be draggable using GSAP Draggable.
@@ -626,6 +676,7 @@ function swipe() {
     onDrag: checkPosition,
     onDragEnd: function (endX) {
       if (Math.round(this.endX) > 0) {
+        console.log('checkposition = ', checkPosition);
         swipeLike(); // like if drag the right
       } else {
         swipePass(); // pass if drag to the left
@@ -673,6 +724,7 @@ function swipeLike() {
   });
 
   console.log('Le dio like');
+  console.log('Profile = ', profile);
   likecount++;
   likecounter.innerHTML = likecount;
 }
@@ -723,6 +775,12 @@ function addProfile() {
   let filterProfiles = filterItems(profiles, lforv);
   const r = Math.floor(Math.random() * filterProfiles.length);
   const wording = document.getElementById('wording');
+  console.log('filterProfiles = ', filterProfiles);
+  console.log(`filterProfiles[r] ${r} =  `, filterProfiles[r]);
+  // console.log(`filterProfiles[r].name = `, filterProfiles[r].name);
+  // console.log(`filterProfiles[r].name = `, filterProfiles[r].avatar);
+  currentUser = filterProfiles[r];
+  console.log('currentUser : ', currentUser);
 
   // the tricky bit of inserting the profile into the HTML..in JQUERY this is done with 'prepend' but I do it with insertAdjacentHTML, basically it inserts the profile class directly at the start of the content class.
   content.insertAdjacentHTML(
@@ -730,11 +788,14 @@ function addProfile() {
     "<div class='profile' id='profile'><div class='profile-header'><div class='profile-wording' id='wording'>" +
       filterProfiles[r].name +
       ' ' +
-      filterProfiles[r].age +
+      filterProfiles[r].birthdate +
       ' • ' +
-      filterProfiles[r].location +
-      "&nbsp;&nbsp;&nbsp<span style='color:blue;cursor:pointer'>View Profile</span></div></div><div class='profile-photos'><div class='pic' id='pic'><div class='profile-cross' id='profile-cross'>X</div>" +
-      filterProfiles[r].pic +
+      filterProfiles[r].city +
+      "&nbsp;&nbsp;&nbsp<span style='color:blue;cursor:pointer'>View Profile</span></div></div><div class='profile-photos'><div class='pic' id='pic' style='background-image: url(" +
+      `" ${filterProfiles[r].avatar}"` +
+      ");touch-action: none;width: auto;background-repeat: no-repeat;'>" +
+      "<div class='profile-cross' id='profile-cross'>X</div>" +
+      // filterProfiles[r].avatar +
       "<div class='profile-heart' id='profile-heart'>🤍</div></div></div><div class='swipe-wording'>Drag and throw me!</div></div>"
   );
   const qmark = document.getElementById('qmark');

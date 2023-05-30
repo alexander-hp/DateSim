@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if( !empty($_POST) )
     {
         if( isset($_POST)) 
@@ -31,11 +32,6 @@
 
                 // TODO if para ver si ya existia el correo o no
                 if ($row[0] > 0) {
-                    $_SESSION["userName"] = $row[1];
-                  // print($row[1]);
-                  $_SESSION["userEmail"] = $email;
-
-
                   // echo ("El correo: '$email' ya existe");
                   // $response = [
                   //   "status" => false,
@@ -59,10 +55,15 @@
                   // print($queryAddUser);
                   $statement = mysqli_query($conexion, $queryAddUser)
                       or die(mysqli_error($conexion));
+                $_SESSION["userName"] = $name;
+                  // print($row[1]);
+                  $_SESSION["userEmail"] = $email;
                   // print_r($statement);
                   // $row = mysqli_fetch_array($statement);
                   // return true;
                   echo("true");
+                  return "true";
+                  http_response_code(204);
                 }
             
               } catch (PDOException $e) {

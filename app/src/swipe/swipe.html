@@ -34,7 +34,7 @@
   </svg>
   <div class="container" id="container">
     <div class="user-profile" id="user-profile">
-      <div class="seeking">
+      <div class="seeking" style="display: none;">
         <label for="Iam">I am:</label>
         <select id="Iam" name="Iam">
           <option value="Male" selected>Male</option>
@@ -43,9 +43,9 @@
         </select>
         <label for="lfor">Looking for:</label>
         <select id="lfor" name="Iam">
-          <option value="Male">Male</option>
-          <option value="Female" selected>Female</option>
-          <option value="Non-Gender">Non-Gender</option>
+          <option value="Hombre">Male</option>
+          <option value="Mujer" selected>Female</option>
+          <option value="Otro">Non-Gender</option>
         </select>
       </div>
       <div class="profile-buttons">
@@ -59,7 +59,7 @@
     </div>
     <div class="stack" id="stack"><span id="qmark">❓</span></div>
     <!-- used to show stack of cards, keep this seperate as it needs to be not draggable -->
-    <div class="content" id="content"></div>
+    <div class="content" id="content" style="margin-top: 30px;"></div>
     <!-- you won't find profile class here, it gets added in the javascript using insertAdjacentHTML! -->
   </div>
 
