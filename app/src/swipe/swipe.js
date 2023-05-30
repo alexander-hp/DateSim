@@ -5,6 +5,8 @@ const likecounter = document.getElementById('likecounter');
 const passcounter = document.getElementById('passcounter');
 
 var currentUser;
+
+var idUser;
 var emailUser;
 var birthdateUser;
 var genderUser;
@@ -39,6 +41,7 @@ function validateSession() {
       },
       success: function (response) {
         console.log(response);
+        idUser = response.id;
         emailUser = response.email;
         nameUser = fillForm(response.name);
         birthdateUser = response.birthdate;
@@ -55,12 +58,6 @@ function validateSession() {
         console.log(emailUser);
         console.log(hobbiesUser);
         resolve();
-        // ?Poner fecha
-        // window.onload = function () {
-        //   var dateInput = document.getElementById('validationBirthdate');
-        //   dateInput.setAttribute('value', response.birthdate);
-        // };
-        // ? fin poner fecha
       },
       error: function (error) {
         $('#respuestaBD').html(error);
@@ -126,6 +123,47 @@ function closeSession() {
       $('#respuestaBD').html('Session cerrada');
       window.location.replace('http://localhost/DateSim/app/src');
       console.log('Session cerrada');
+    },
+  });
+}
+
+function createMatch() {
+  var fechaActual = new Date();
+
+  // Obtener los componentes de la fecha
+  var year = fechaActual.getFullYear();
+  var month = ('0' + (fechaActual.getMonth() + 1)).slice(-2); // Agregar cero inicial si es necesario
+  var day = ('0' + fechaActual.getDate()).slice(-2); // Agregar cero inicial si es necesario
+
+  // Formatear la fecha en el formato deseado
+  var fechaFormateada = year + '-' + month + '-' + day;
+  var parametros = {
+    idUser: idUser,
+    idUserToMatch: currentUser.id,
+    creationDate: fechaFormateada,
+    result: 'pending',
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '../../services/createMatch.php',
+    data: parametros,
+    dataType: 'json',
+    beforeSend: function () {
+      $('#respuestaBD').html('Procesando, espere por favor...');
+    },
+    success: function (response) {
+      // var jsonResponse = JSON.parse(response);
+      // console.log(jsonResponse);
+      console.log(response);
+      // debugger;
+    },
+    error: function (error) {
+      $('#respuestaBD').html('Session cerrada');
+      // window.location.replace('http://localhost/DateSim/app/src');
+      // console.log('Session cerrada');
+      console.log('error CreateMatch: ', error);
+      // debugger;
     },
   });
 }
@@ -271,6 +309,7 @@ function swipeLike() {
 
   console.log('Le dio like');
   console.log('Profile = ', profile);
+  createMatch();
   likecount++;
   likecounter.innerHTML = likecount;
 }
